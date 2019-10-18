@@ -32,22 +32,22 @@ const pages = [
 
 const AnimateApp = (props) => {
   const [pageIndex, setPage] = useState(0);
-  const [lock, setLock] = useState(true);
   const transitions = useTransition(pageIndex, p => p, {
-    from: { opacity: 0, transform: 'rotateY(100deg)', transformOrigin: 'left' },
-    enter: { opacity: 1, transform: 'rotateY(0)', transformOrigin: 'left', height: '100%' },
-    leave: { opacity: 0, transform: 'rotateY(-100deg)', transformOrigin: 'right', position: 'absolute', visibility: 'hidden' },
+    from: { opacity: 0 },
+    enter: { opacity: 1, height: '100%' },
+    leave: { opacity: 0, position: 'absolute', visibility: 'hidden' },
   });
 
   useEffect(() => {
-    window.addEventListener('scroll', throttle(handleScroll, 1000));
+    // window.addEventListener('click', throttle(handleScroll, 1000));
+    window.addEventListener('click', handleScroll);
     return () => {
-      window.removeEventListener('scroll', throttle(handleScroll, 1000));
+      // window.removeEventListener('click', throttle(handleScroll, 1000));
+      window.removeEventListener('click', handleScroll);
     }
   });
 
   const handleScroll = () => {
-    console.log('scroll!!')
     // e.preventDefault();
 
     // const element = e.target
