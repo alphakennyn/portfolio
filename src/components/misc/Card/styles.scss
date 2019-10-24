@@ -1,0 +1,31 @@
+.card_container {
+    background-color: white;
+    box-shadow: -1px 2px 7px 0 rgba(0, 0, 0, 0.300);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.cloud_card {
+    // background-color: transparent;
+    box-shadow: none;
+    
+    .card_header{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        & > :nth-child(n) {
+            flex-basis: auto; /* default value */
+        }
+
+        h2, p {
+            margin-top: 0px;
+        }
+
+        .card_header__rightside {
+            display: flex;
+            justify-content: space-evenly;
+            // align-items: center;
+        }
+    }
+}
