@@ -1,19 +1,20 @@
 import React from 'react';
 import './styles.scss';
 
-const NameComponent = (props) => {
+const NameComponent = ({ img, name }) => {
     return (
         <div className="name-container">
-            hi
+          <img alt="Kenny Nguyen profile" src={img} />
+          <h2>{name}</h2>
         </div>
       );
 }
 
 
-const Page = () => {
+const Page = (props) => {
   return (
     <div className="page intro">
-        <NameComponent />
+        <NameComponent {...props}/>
     </div>
   );
 }
