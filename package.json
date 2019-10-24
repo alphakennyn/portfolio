@@ -10,6 +10,7 @@
     "octonode": "^0.9.5",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
+    "react-icons": "^3.7.0",
     "react-scripts": "3.2.0",
     "react-spring": "^8.0.27",
     "react-use-gesture": "^6.0.3"

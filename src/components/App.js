@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useTransition, animated } from 'react-spring'
-import github from 'octonode';
+// import github from 'octonode';
 
 
 // components
@@ -8,11 +8,13 @@ import LoadPage from './Loader';
 import HomePage from './Home';
 import ProjectsPage from './Projects';
 import JobsPage from './Jobs';
+import WIPPage from './WIP';
 
 import './App.scss';
 
-const client = github.client();
-const ghme = client.user('alphakennyn');
+// const client = github.client();
+// const ghme = client.user('alphakennyn');
+const ghme = null;
 
 const AnimateApp = (props) => {
   const [pageIndex, setPage] = useState(0);
@@ -114,4 +116,12 @@ const AnimateApp = (props) => {
   );
 }
 
-export default AnimateApp;
+const WIPApp = (props) => {
+  return (
+    <div className="Kenny-Nguyen">
+      <WIPPage />
+    </div>
+  )
+}
+
+export default WIPApp;
