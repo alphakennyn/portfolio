@@ -11,6 +11,7 @@
 .wip-desc {
     color: white;
     text-align: center;
+    animation: fade-in 0.3s ease-out both 1s;
 
     & > span {
         display: flex;
@@ -40,5 +41,3 @@
         align-self: center;
     }
 }
-
-// @keyframes roll-in-left{0%{transform:translateX(-800px) rotate(-540deg);opacity:0}100%{transform:translateX(0) rotate(0deg);opacity:1}}

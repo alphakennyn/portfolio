@@ -18,7 +18,7 @@ export default props => {
 			<div>
 				<WIPContainer />
                 <div className="wip-desc">
-                    <h3>Hi! my portfolio is under construction</h3>
+                    <h3>Hey! my portfolio is under construction</h3>
                     <h4>In the meantime you can find me at:</h4>
                     <span>
                         <a target="_blank"  rel="noopener noreferrer" href="https://www.linkedin.com/in/kenny-nguyen-81944989/"><FaLinkedinIn /></a>
