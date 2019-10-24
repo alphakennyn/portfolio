@@ -1,37 +1,42 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useTransition, animated } from 'react-spring'
-import { useGesture } from 'react-use-gesture'
-import throttle from 'lodash.throttle';
+import github from 'octonode';
 
-// import logo from './logo.svg';
 
 // components
-import IntroPage from './page1';
-import ExperiencePage from './page2';
+import LoadPage from './Loader';
+import HomePage from './Home';
+import ProjectsPage from './Projects';
+import JobsPage from './Jobs';
 
 import './App.scss';
 
-function App() {
-  return (
-    <div className="Kenny-Nguyen">
-      <IntroPage />
-    </div>
-  );
-}
-
-const pages = [
-  {
-    page: 'intro',
-    component: <IntroPage />,
-  },
-  {
-    page: 'detail',
-    component: <ExperiencePage />,
-  }
-]
+const client = github.client();
+const ghme = client.user('alphakennyn');
 
 const AnimateApp = (props) => {
   const [pageIndex, setPage] = useState(0);
+  const [githubInfo, setGitHub] = useState({});
+
+  const pages = [
+    {
+      page: 'loading',
+      component: <LoadPage />,
+    },
+    {
+      page: 'home',
+      component: <HomePage { ...githubInfo }/>,
+    },
+    {
+      page: 'projects',
+      component: <ProjectsPage />,
+    },
+    {
+      page: 'jobs',
+      component: <JobsPage />,
+    }
+  ];
+  
   const transitions = useTransition(pageIndex, p => p, {
     from: { opacity: 0 },
     enter: { opacity: 1, height: '100%' },
@@ -46,6 +51,35 @@ const AnimateApp = (props) => {
       window.removeEventListener('click', handleScroll);
     }
   });
+  useEffect(() => {
+    // window.addEventListener('click', throttle(handleScroll, 1000));
+    ghme.info((err, body, headers) => {
+      if (err) {
+        return;
+      }
+      console.log(body);
+      const {
+        avatar_url,
+        html_url,
+        hireable,
+        created_at,
+        name,
+        login,
+        location,
+        repos_url,
+      } = body;
+      setGitHub({
+        img: avatar_url,
+        url: html_url,
+        hireable: !!hireable,
+        created_at,
+        name,
+        login,
+        location,
+      });    
+    });
+  }, []);
+
 
   const handleScroll = () => {
     // e.preventDefault();
@@ -57,7 +91,10 @@ const AnimateApp = (props) => {
     //   console.log('scrolling')
     // }
     // setLock(false);
-    const i = pageIndex === 0 ? 1 : 0;
+    let copyPageIndex = pageIndex
+    console.log('pageIndex => ', pageIndex);
+    console.log('pages.length => ', pages.length);
+    const i = pageIndex >= pages.length - 1 ? 0 : ++copyPageIndex;
     setPage(i);
     // setTimeout(() => {
     //   setLock(true);
@@ -76,4 +113,5 @@ const AnimateApp = (props) => {
     </div>
   );
 }
+
 export default AnimateApp;
