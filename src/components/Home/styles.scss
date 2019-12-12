@@ -3,6 +3,24 @@
     background-color: rgb(73, 73, 73);
 }
 
-.name-container {
-    position: absolute;
+.intro__container {
+    // position: absolute;
+    row-gap: 50px;
+    & > :nth-child(n) {
+        width: 100%;
+    }
+    
+    .intro__container-content {
+        padding-left: 50px;
+    }
+
+    @media only screen and (min-width: 600px) {
+        display: flex;
+        justify-content: center;
+
+        & > :nth-child(n) {
+            width: 400px;
+        }
+
+    }
 }
