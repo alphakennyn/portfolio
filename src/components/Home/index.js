@@ -1,24 +1,38 @@
 import React from 'react';
 import './styles.scss';
 
-const NameComponent = ({ img, name }) => {
+const description = "Hi! My name is Kenny Nguyen. I'm Software Engineer from Concoria University. I enjoy travelling and climbing stuff";
+
+const linkedin = 'https://www.linkedin.com/in/kenny-nguyen-81944989/';
+const github = 'https://github.com/alphakennyn';
+const ig = 'https://www.instagram.com/alphakennyn/';
+
+const NameComponent = ({ img, name, description }) => {
     return (
         <div className="intro__container">
           <img className="intro__profile-image" alt="Kenny Nguyen profile" src={img} />
           <div className="intro__container-content">
             <h2>{name}</h2>
             <hr />
-            <p></p>
+            <p>{description}</p>
           </div>
         </div>
       );
 }
 
+const MediaComponent = ({ linkedin, github, ig }) => (
+  <div className="intro__social-media">
+    <a target="_blank" rel="noopener noreferrer" href={linkedin}>linkedin</a>
+    <a target="_blank" rel="noopener noreferrer" href={github}>github</a>
+    <a target="_blank" rel="noopener noreferrer" href={ig}>ig</a>
+  </div>
+)
 
 const Page = (props) => {
   return (
     <div className="page intro">
-        <NameComponent {...props}/>
+        <NameComponent {...props} description={description}/>
+        <MediaComponent linkedin={linkedin} github={github} ig={ig}/>
     </div>
   );
 }
