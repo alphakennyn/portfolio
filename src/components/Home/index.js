@@ -7,10 +7,14 @@ const linkedin = 'https://www.linkedin.com/in/kenny-nguyen-81944989/';
 const github = 'https://github.com/alphakennyn';
 const ig = 'https://www.instagram.com/alphakennyn/';
 
+const ProfileIcon = ({ img }) => ((
+    <img className="image-icon" alt="Kenny Nguyen profile" src={img} />
+));
+
 const NameComponent = ({ img, name, description }) => {
     return (
         <div className="intro__container">
-          <img className="intro__profile-image" alt="Kenny Nguyen profile" src={img} />
+          <ProfileIcon img={img}/>
           <div className="intro__container-content">
             <h2>{name}</h2>
             <hr />

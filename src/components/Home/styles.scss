@@ -11,7 +11,7 @@
     }
     
     .intro__container-content {
-        padding-left: 50px;
+        // padding-left: 50px;
     }
 
     @media only screen and (min-width: 600px) {
@@ -31,3 +31,7 @@
     justify-content: space-between;
 }
 
+.image-icon {
+    border-radius: 100%;
+    max-width: 300px;
+}
