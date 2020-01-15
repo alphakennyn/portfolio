@@ -4,24 +4,25 @@
 }
 
 .intro__container {
-    // position: absolute;
+    display: flex;
+    justify-content: center;
     row-gap: 50px;
-    & > :nth-child(n) {
-        width: 100%;
-    }
     
     .intro__container-content {
-        // padding-left: 50px;
+        width: 100%;
     }
-
+        
+    // desktop
     @media only screen and (min-width: 600px) {
-        display: flex;
-        justify-content: center;
-
-        & > :nth-child(n) {
-            width: 400px;
+        .intro__container-content {
+            max-width: 800px;
+            display: flex;
+            justify-content: space-evenly;  
+            
+            & > :nth-child(n) {
+                width: 300px;
+            }
         }
-
     }
 }
 
@@ -33,5 +34,5 @@
 
 .image-icon {
     border-radius: 100%;
-    max-width: 300px;
+    width: inherit;
 }

@@ -14,11 +14,13 @@ const ProfileIcon = ({ img }) => ((
 const NameComponent = ({ img, name, description }) => {
     return (
         <div className="intro__container">
-          <ProfileIcon img={img}/>
           <div className="intro__container-content">
-            <h2>{name}</h2>
-            <hr />
-            <p>{description}</p>
+            <ProfileIcon img={img}/>
+            <div className="intro__container-description">
+              <h2>{name}</h2>
+              <hr />
+              <p>{description}</p>
+            </div>
           </div>
         </div>
       );
@@ -36,7 +38,7 @@ const Page = (props) => {
   return (
     <div className="page intro">
         <NameComponent {...props} description={description}/>
-        <MediaComponent linkedin={linkedin} github={github} ig={ig}/>
+        {/* <MediaComponent linkedin={linkedin} github={github} ig={ig}/> */}
     </div>
   );
 }
