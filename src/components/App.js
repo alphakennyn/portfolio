@@ -15,7 +15,7 @@ const client = github.client();
 const ghme = client.user('alphakennyn');
 
 const AnimateApp = (props) => {
-  const [pageIndex, setPage] = useState(1);
+  const [pageIndex, setPage] = useState(3);
   const [githubInfo, setGitHub] = useState({});
 
   const pages = [
@@ -93,7 +93,7 @@ const AnimateApp = (props) => {
       if (err) {
         return;
       }
-      console.log(body);
+      // console.log(body);
       const {
         avatar_url,
         html_url,

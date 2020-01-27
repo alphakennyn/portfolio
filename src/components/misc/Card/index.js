@@ -23,11 +23,12 @@ export const DefaultCard = ({ title, description, link, className = '' }) => {
       );
 }
 
-export const CloudCard = ({ title, description, link, startTime, endTime }) => {
+export const JobCard = ({ workName, title, description, link, startTime, endTime }) => {
     return (
         <div className="card_container cloud_card">
+          <h2 className="card_title">{workName}</h2>
           <div className="card_header">
-            <h2 className="card_title">{title}</h2>
+            <b className="card_title">{title}</b>
             <div className="card_header__rightside">
                 <p>{startTime}</p> - 
                 <p>{endTime}</p>

@@ -1,15 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { CloudCard } from '../misc/Card';
+import { JobCard } from '../misc/Card';
 
 import jobs from '../../data/jobs.json';
 
 import './styles.scss';
 
-export default (props) => {
-    const cards = jobs.map(({ id, ...rest }) => <CloudCard {...rest} key={id}/>)
+const cards = jobs.map(({ id, ...rest }) => <JobCard {...rest} key={id}/>)
 
+export default (props) => {
     return (
-        <div className="page page_jobs">
+        <div className="page jobs">
           {cards}
         </div>
       );
