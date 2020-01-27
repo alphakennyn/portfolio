@@ -15,7 +15,7 @@ const client = github.client();
 const ghme = client.user('alphakennyn');
 
 const AnimateApp = (props) => {
-  const [pageIndex, setPage] = useState(0);
+  const [pageIndex, setPage] = useState(1);
   const [githubInfo, setGitHub] = useState({});
 
   const pages = [
@@ -43,44 +43,6 @@ const AnimateApp = (props) => {
     leave: { opacity: 0, position: 'absolute', visibility: 'hidden' },
   });
 
-  useEffect(() => {
-    // window.addEventListener('click', throttle(handleScroll, 1000));
-    window.addEventListener('click', handleScroll);
-    return () => {
-      // window.removeEventListener('click', throttle(handleScroll, 1000));
-      window.removeEventListener('click', handleScroll);
-    }
-  });
-  useEffect(() => {
-    // window.addEventListener('click', throttle(handleScroll, 1000));
-    ghme.info((err, body, headers) => {
-      if (err) {
-        return;
-      }
-      console.log(body);
-      const {
-        avatar_url,
-        html_url,
-        hireable,
-        created_at,
-        name,
-        login,
-        location,
-        repos_url,
-      } = body;
-      setGitHub({
-        img: avatar_url,
-        url: html_url,
-        hireable: !!hireable,
-        created_at,
-        name,
-        login,
-        location,
-      });    
-    });
-  }, []);
-
-
   const handleScroll = () => {
     // e.preventDefault();
 
@@ -100,6 +62,61 @@ const AnimateApp = (props) => {
     //   setLock(true);
     // }, 500)
   }
+
+  /**
+   * @description set favicon URL
+   * @param {String} avatar_url 
+   */
+  const setFavicon = (avatar_url) => {
+    const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+    link.type = 'image/x-icon';
+    link.rel = 'shortcut icon';
+    link.href = avatar_url;
+    document.getElementsByTagName('head')[0].appendChild(link);
+  }
+
+  useEffect(() => {
+    // window.addEventListener('click', throttle(handleScroll, 1000));
+    // window.addEventListener('click', handleScroll);
+    return () => {
+      // window.removeEventListener('click', throttle(handleScroll, 1000));
+      window.removeEventListener('click', handleScroll);
+    }
+  });
+  
+  /**
+   * @description use this for setup github items
+   */
+  useEffect(() => {
+    // window.addEventListener('click', throttle(handleScroll, 1000));
+    ghme.info((err, body, headers) => {
+      if (err) {
+        return;
+      }
+      console.log(body);
+      const {
+        avatar_url,
+        html_url,
+        hireable,
+        created_at,
+        name,
+        login,
+        location,
+        repos_url,
+      } = body;
+
+      setGitHub({
+        img: avatar_url,
+        url: html_url,
+        hireable: !!hireable,
+        created_at,
+        name,
+        login,
+        location,
+      });
+      setFavicon(avatar_url);
+    });
+  }, []);
 
   return (
     // <div className="Kenny-Nguyen" onWheel={(e) => throttle(handleScroll(e), 1000, { trailing: true, leading: true })}>
