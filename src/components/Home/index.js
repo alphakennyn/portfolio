@@ -20,6 +20,7 @@ const NameComponent = ({ img, name, description }) => {
               <h2>{name}</h2>
               <hr />
               <p>{description}</p>
+              <MediaComponent linkedin={linkedin} github={github} ig={ig}/>
             </div>
           </div>
         </div>
@@ -38,7 +39,6 @@ const Page = (props) => {
   return (
     <div className="page intro">
         <NameComponent {...props} description={description}/>
-        {/* <MediaComponent linkedin={linkedin} github={github} ig={ig}/> */}
     </div>
   );
 }

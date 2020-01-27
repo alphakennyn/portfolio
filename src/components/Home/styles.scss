@@ -1,9 +1,13 @@
 
 .intro {
-    background-color: rgb(73, 73, 73);
+    background: #005AA7;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #FFFDE4, #005AA7);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #FFFDE4, #005AA7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .intro__container {
+    width: 100%;
+
     display: flex;
     justify-content: center;
     row-gap: 50px;
@@ -14,6 +18,9 @@
         
     // desktop
     @media only screen and (min-width: 600px) {
+        align-self: center;
+        margin: 0px;
+
         .intro__container-content {
             max-width: 800px;
             display: flex;
