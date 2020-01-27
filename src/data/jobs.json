@@ -1,11 +1,19 @@
 [
     {
+        "id": "5a5abc8366c74fe39de5ea3e7142f65d",
+        "title": "Backend Developer",
+        "workName": "Make Good Food",
+        "location": "Montreal, Quebec",
+        "startTime": 1579528800000,
+        "endTime": null
+    },
+    {
         "id": "ce6680e28abe437fa4079f736d886150",
         "title": "Application Developer",
         "workName": "Dynamicly",
         "location": "Montreal, Quebec",
         "startTime": 1519865547000,
-        "endTime": null
+        "endTime": 1575669600000
     },
     {
         "id": "90e1541bb3aa4ddfbb144210c1a441e0",
