@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
 import { CloudCard } from '../misc/Card';
 
 import jobs from '../../data/jobs.json';

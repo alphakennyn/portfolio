@@ -7,13 +7,15 @@
 
 .intro__container {
     width: 100%;
-
+    background: rgba(53, 53, 53, 0.418);
     display: flex;
     justify-content: center;
     row-gap: 50px;
+    padding: 5% 0px;
     
     .intro__container-content {
         width: 100%;
+        padding: 0px 5%;
     }
         
     // desktop
