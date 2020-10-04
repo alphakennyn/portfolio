@@ -1,8 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useTransition, animated } from 'react-spring'
 import github from 'octonode';
-
-
+import throttle from 'lodash.throttle';
 // components
 import LoadPage from './Loader';
 import HomePage from './Home';
@@ -45,23 +44,14 @@ const AnimateApp = (props) => {
 
   const handleScroll = () => {
     // e.preventDefault();
-
-    // const element = e.target
-
-    // if (element.scrollHeight - element.scrollTop === element.clientHeight) {
-    //   // do something at end of scroll
-    //   console.log('scrolling')
-    // }
-    // setLock(false);
     let copyPageIndex = pageIndex
     console.log('pageIndex => ', pageIndex);
     console.log('pages.length => ', pages.length);
     const i = pageIndex >= pages.length - 1 ? 0 : ++copyPageIndex;
     setPage(i);
-    // setTimeout(() => {
-    //   setLock(true);
-    // }, 500)
   }
+
+  const handleScrollWithThrottle = () => throttle(handleScroll, 300);
 
   /**
    * @description set favicon URL
@@ -76,11 +66,12 @@ const AnimateApp = (props) => {
   }
 
   useEffect(() => {
-    // window.addEventListener('click', throttle(handleScroll, 1000));
+    window.addEventListener('click', handleScrollWithThrottle);
+    // window.addEventListener('scroll', handleScrollWithDebounce);
     // window.addEventListener('click', handleScroll);
     return () => {
-      // window.removeEventListener('click', throttle(handleScroll, 1000));
-      window.removeEventListener('click', handleScroll);
+      window.removeEventListener('click', handleScrollWithThrottle);
+      // window.removeEventListener('click', handleScroll);
     }
   });
   
@@ -122,11 +113,16 @@ const AnimateApp = (props) => {
     // <div className="Kenny-Nguyen" onWheel={(e) => throttle(handleScroll(e), 1000, { trailing: true, leading: true })}>
     <div className="Kenny-Nguyen">
       {
-        transitions.map(({ item, props }) => {
+        transitions.map(({ item, transitionProps }) => {
+          console.log(item);
           const { component } = pages[item];
-          return <animated.div style={{ ...props }}>{component}</animated.div>;
+          return <animated.div style={{ ...transitionProps }}>{component}</animated.div>;
         })
       }
+      <div className="controls_container_item left-control-item"><button onClick={() => setPage(2)}>Projects</button></div>
+      <div className="controls_container_item right-control-item"><button onClick={() => setPage(3)}>Experience</button></div>
+      <div className="controls_container">
+      </div>
     </div>
   );
 }

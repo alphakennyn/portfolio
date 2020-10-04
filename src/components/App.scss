@@ -30,3 +30,16 @@
   position: relative;
   height: 100vh;
 }
+
+.controls_container_item {
+  position: absolute;
+  // height:inherit;
+  top: 50%;
+  // display: flex;
+  &.left-control-item {
+    left: 0;
+  }
+  &.right-control-item {
+    right: 0;
+  }
+}
