@@ -1,36 +1,32 @@
 {
-  "name": "web",
-  "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "lodash.throttle": "^4.1.1",
-    "node-sass": "^4.12.0",
-    "octonode": "^0.9.5",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
-    "react-scripts": "3.2.0",
-    "react-spring": "^8.0.27",
-    "react-use-gesture": "^6.0.3"
-  },
+  "name": "cara",
+  "description": "Playful and Colorful One-Page portfolio featuring Parallax effects and animations",
+  "version": "0.2.8",
+  "author": "LekoArts <hello@lekoarts.de>",
+  "license": "0BSD",
+  "starter-name": "gatsby-starter-portfolio-cara",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "develop:cypress": "cross-env CYPRESS_SUPPORT=y yarn develop",
+    "build:cypress": "cross-env CYPRESS_SUPPORT=y yarn build",
+    "start": "gatsby develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "dependencies": {
+    "@lekoarts/gatsby-theme-cara": "^1.2.18",
+    "gatsby": "^2.25.3",
+    "gatsby-plugin-google-analytics": "^2.4.1",
+    "gatsby-plugin-manifest": "^2.5.2",
+    "gatsby-plugin-netlify": "^2.4.0",
+    "gatsby-plugin-offline": "^3.3.3",
+    "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.13",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "devDependencies": {
+    "cross-env": "^7.0.2"
   }
 }
