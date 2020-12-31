@@ -1,13 +1,15 @@
-.card_container {
-    background-color: white;
+@mixin base-card {
+    background-color: #fbfbf8d8;
     box-shadow: -1px 2px 7px 0 rgba(0, 0, 0, 0.300);
     border-radius: 10px;
     padding: 5px;
 }
 
 .cloud_card {
-    // background-color: transparent;
+    @include base-card;
+
     box-shadow: none;
+    margin-bottom: 5px;
     
     .card_header{
         display: flex;
@@ -20,6 +22,7 @@
 
         h2, p {
             margin-top: 0px;
+            margin-bottom: 0px;
         }
 
         .card_header__rightside {

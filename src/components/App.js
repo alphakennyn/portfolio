@@ -4,9 +4,9 @@ import github from 'octonode';
 import throttle from 'lodash.throttle';
 // components
 import LoadPage from './Loader';
-import HomePage from './Home';
+import HomePage, { SimpleV1Component } from './Home';
 import ProjectsPage from './Projects';
-import JobsPage from './Jobs';
+import JobsPage, {JobV1Component} from './Jobs';
 
 import './App.scss';
 
@@ -18,14 +18,6 @@ const AnimateApp = (props) => {
   const [githubInfo, setGitHub] = useState({});
 
   const pages = [
-    {
-      page: 'loading',
-      component: <LoadPage />,
-    },
-    {
-      page: 'home',
-      component: <HomePage { ...githubInfo }/>,
-    },
     {
       page: 'projects',
       component: <ProjectsPage />,
@@ -42,17 +34,6 @@ const AnimateApp = (props) => {
     leave: { opacity: 0, position: 'absolute', visibility: 'hidden' },
   });
 
-  const handleScroll = () => {
-    // e.preventDefault();
-    let copyPageIndex = pageIndex
-    console.log('pageIndex => ', pageIndex);
-    console.log('pages.length => ', pages.length);
-    const i = pageIndex >= pages.length - 1 ? 0 : ++copyPageIndex;
-    setPage(i);
-  }
-
-  const handleScrollWithThrottle = () => throttle(handleScroll, 300);
-
   /**
    * @description set favicon URL
    * @param {String} avatar_url 
@@ -64,16 +45,6 @@ const AnimateApp = (props) => {
     link.href = avatar_url;
     document.getElementsByTagName('head')[0].appendChild(link);
   }
-
-  useEffect(() => {
-    window.addEventListener('click', handleScrollWithThrottle);
-    // window.addEventListener('scroll', handleScrollWithDebounce);
-    // window.addEventListener('click', handleScroll);
-    return () => {
-      window.removeEventListener('click', handleScrollWithThrottle);
-      // window.removeEventListener('click', handleScroll);
-    }
-  });
   
   /**
    * @description use this for setup github items
@@ -84,7 +55,6 @@ const AnimateApp = (props) => {
       if (err) {
         return;
       }
-      console.log(body);
       const {
         avatar_url,
         html_url,
@@ -111,17 +81,12 @@ const AnimateApp = (props) => {
 
   return (
     // <div className="Kenny-Nguyen" onWheel={(e) => throttle(handleScroll(e), 1000, { trailing: true, leading: true })}>
-    <div className="Kenny-Nguyen">
-      {
-        transitions.map(({ item, transitionProps }) => {
-          console.log(item);
-          const { component } = pages[item];
-          return <animated.div style={{ ...transitionProps }}>{component}</animated.div>;
-        })
-      }
-      <div className="controls_container_item left-control-item"><button onClick={() => setPage(2)}>Projects</button></div>
-      <div className="controls_container_item right-control-item"><button onClick={() => setPage(3)}>Experience</button></div>
-      <div className="controls_container">
+    <div className="Kenny-Nguyen intro">
+      <div className="basic-template">
+        <div className="template-container">
+          <SimpleV1Component { ...githubInfo }/>
+          <JobV1Component />
+        </div>
       </div>
     </div>
   );

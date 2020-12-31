@@ -28,7 +28,13 @@
 
 .Kenny-Nguyen {
   position: relative;
-  height: 100vh;
+  @media (min-width: 1025px) {
+    height: 100vh;
+  }
+
+  @media (max-width: 1024px) {
+    min-height: 100vh;
+  }
 }
 
 .controls_container_item {
@@ -41,5 +47,25 @@
   }
   &.right-control-item {
     right: 0;
+  }
+}
+
+.basic-template {
+  display: flex;
+  width: 100%;
+  height: inherit;
+  align-items: center;
+  // display: flex;
+  row-gap: 50px;
+  
+  .template-container {
+    
+    @media (min-width: 1025px) {
+      width: inherit;
+      justify-content: space-evenly;
+      display: flex;
+      background: rgba(53, 53, 53, 0.418);
+      padding: 5% 0px;
+    }
   }
 }

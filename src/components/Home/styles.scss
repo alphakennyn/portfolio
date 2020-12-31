@@ -1,8 +1,11 @@
-
-.intro {
+@mixin dark-background {
     background: #005AA7;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to bottom, #FFFDE4, #005AA7);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to bottom, #FFFDE4, #005AA7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.intro {
+    // @include dark-background;
 }
 
 .intro__container {
@@ -44,4 +47,15 @@
 .image-icon {
     border-radius: 100%;
     width: inherit;
+}
+
+.about {
+    @media (min-width: 725px) {
+        width: 300px;
+    }
+
+    @media (max-width: 724px) {
+        width: 100%;
+        @include dark-background;
+    }
 }

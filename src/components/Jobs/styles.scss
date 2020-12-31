@@ -1,3 +1,10 @@
 .page_jobs {
     background-color: rgb(113, 215, 255);
 }
+
+.job-v1-container {
+    width: 100%;
+    @media (min-width: 1025px) {
+        width: 600px;
+    }
+}
