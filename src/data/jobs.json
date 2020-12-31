@@ -1,11 +1,27 @@
 [
     {
+        "id": "121430e2-4b11-11eb-ae93-0242ac130002",
+        "title": "Backend Developer",
+        "workName": "Goodfood",
+        "location": "Montreal, Quebec",
+        "startTime": 1579478400,
+        "endTime": null,
+        "description": [
+            "Created way too many damn animations",
+            "Sort of did stuff?"
+        ]
+    },
+    {
         "id": "ce6680e28abe437fa4079f736d886150",
         "title": "Application Developer",
         "workName": "Dynamicly",
         "location": "Montreal, Quebec",
         "startTime": 1519865547000,
-        "endTime": null
+        "endTime": 1575504000,
+        "description": [
+            "Created way too many damn animations",
+            "Sort of did stuff?"
+        ]
     },
     {
         "id": "90e1541bb3aa4ddfbb144210c1a441e0",
@@ -13,7 +29,8 @@
         "workName": "Ometz Agency",
         "location": "Montreal, Quebec",
         "startTime": 1462063947000,
-        "endTime": 1470012747000
+        "endTime": 1470012747000,
+        "description": []
     },
     {
         "id": "88fc249e09c042be9f3bd9bb85c8852c",
@@ -21,6 +38,7 @@
         "workName": "Industry Canada",
         "location": "Ottawa, Ontario",
         "startTime": 1441068747000,
-        "endTime": 1448931147000
+        "endTime": 1448931147000,
+        "description": []
     }
 ]
